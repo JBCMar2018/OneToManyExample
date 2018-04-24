@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<p>A back end developer gave you this code which you have to integrate in your template.
+Your copy and paste functionality isn't working on your machine, so you have to type everything.
+And you only have a limited amount of disk space left, so you can only use the code that works for the specific
+purpose you are trying to achieve.</p>
+
+<p>Look through this code and use only the code that you will need to:</p>
+<ul>
+    <li>Create menu options to surface all of your routes so you can see how this project works as easily as possible. </li>
+    <li>Modify your project. You will need to define the relationship between artiste and song. It is a one to many relationship. </li>
+    <li>Look through this code to see how songs can be entered along with their lead artistes on one form. Replicate this in your code. The end user should select an artiste from a dropdown.</li>
+    <li>Display all of the artistes (and their pictures, or default images if they don't have pictures), and the songs attributed to them in the application</li>
+</ul>
+
+<!--OOOh! What does this code do?-->
+<div th:each="eachArtiste:${allartistes}">
+    <h2 th:text="${eachArtiste.fullName}"></h2>
+    <h3 th:text="${eachArtiste.stageName}==null?'':'('+${eachArtiste.stageName}+')'"></h3>
+    <div th:each="eachSong:${eachArtiste.mySongs}">
+        <p th:text="${eachSong.title}"></p>
+    </div>
+</div>
+</body>
+</html>

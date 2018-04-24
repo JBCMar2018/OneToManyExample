@@ -18,10 +18,11 @@ public class MainController {
     SongRepository songs;
 
     @RequestMapping("/")
-    public @ResponseBody String showIndex()
+    public String showIndex(Model model)
     {
         //Check the database as soon as you run this route. This should be the first thing that you do.
-        return artistes.toString() ;
+        model.addAttribute("allartistes",artistes.findAll());
+        return "index";
     }
 
     @RequestMapping("/addartistes")
@@ -42,13 +43,13 @@ public class MainController {
     }
 
     /*
-    * Add these songs
-    *
-     *  Off The Wall - Michael Jackson
-     *  Purple Rain - Prince
-     *  I'll be watching you - String
+       *Need test data? Add these songs
+     *
+     *  Off The Wall, Beat It, Thriller - Michael Jackson
+     *  Purple Rain, When Doves Cry - Prince
+     *  I'll be watching you, Englishman In New York - String
      *  Use the IDs in /addsong
-     *  Use the dropdown in /addsongiwthform
+     *  Use the dropdown in /addsongiwithform
      *  */
 
     @RequestMapping("/addsong")
@@ -60,7 +61,7 @@ public class MainController {
 
 
     @RequestMapping("/savesong")
-    public @ResponseBody  String saveSong(@ModelAttribute("theSong") Song song, BindingResult result)
+    public String saveSong(@ModelAttribute("theSong") Song song, BindingResult result)
     {
         songs.save(song);
         return "redirect:/";
@@ -73,5 +74,4 @@ public class MainController {
         model.addAttribute("allartistes",artistes.findAll());
         return "addsongform";
     }
-
 }
