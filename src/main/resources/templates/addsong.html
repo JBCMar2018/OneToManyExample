@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--This form shows how the relationship works. The leadArtiste field is the ID of the artiste in question.
+In order to use a dropdown or list box, make sure you select the ID of the artiste in question, and link him/her to the song being created.-->
+    <form action="/savesong" th:object="${theSong}" method="post">
+        <input type="text" th:field="*{title}">
+        <input type="text" th:field="*{leadArtiste}">
+        <button type="submit">Save</button>
+
+    </form>
+</body>
+</html>

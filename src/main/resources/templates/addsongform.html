@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <form action="/savesong" th:object="${theSong}" method="post">
+        <input type="text" th:field="*{title}">
+            <select th:field="*{leadArtiste}">
+                 <option th:each="eachArtiste:${allartistes}"  th:value="${eachArtiste.id}" th:text="${eachArtiste.stageName}==null?${eachArtiste.fullName}:${eachArtiste.stageName}"></option>
+             </select>
+             <button type="submit">Save</button>
+    </form>
+</body>
+</html>
