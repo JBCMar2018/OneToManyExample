@@ -13,7 +13,7 @@ public class Song {
     //There are many songs, but each of them is led by ONE artiste.
     //The Artiste's ID is repsresented in the song table as leadArtiste
     @ManyToOne()
-    Artiste leadArtiste;
+    private Artiste leadArtiste;
 
     public Song() {
     }
